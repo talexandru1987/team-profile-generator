@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch --silent --verbose",
     "start": "node ./src/index.js"
   },
   "repository": {
@@ -21,5 +22,8 @@
   "devDependencies": {
     "@types/jest": "^28.1.1",
     "jest": "^28.1.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
   }
 }
