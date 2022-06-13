@@ -1,7 +1,7 @@
 const Engineer = require("../lib/Engineer");
 
 describe("Engineer Class", () => {
-  //const mock employee details
+  //const mock engineer details
   const mockName = "Alex";
   const mockId = "123";
   const mockEmail = "alex@yahoo.com";
