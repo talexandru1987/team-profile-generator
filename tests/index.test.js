@@ -1,7 +1,10 @@
 const inquirer = require("inquirer");
-const { rootQuestions, employeeDetails, officeNumber } = require(".");
+const { rootQuestions, employeeDetails, officeNumber } = require("../src");
 
 describe("rootQuestions", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   //the test for the root questions
   test("should return the expected answers for the first questions", async () => {
     // set up our mock
