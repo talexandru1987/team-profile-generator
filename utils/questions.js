@@ -5,7 +5,7 @@ const rootQuestions = async () => {
   const questions = [
     {
       type: "input",
-      message: "Please enter your name:",
+      message: "Please enter the name:",
       name: "username",
       validate(answer) {
         if (!answer) {
@@ -17,7 +17,7 @@ const rootQuestions = async () => {
     {
       type: "input",
       message(answers) {
-        return `Hi ${answers.username}.Please enter your employee ID:`;
+        return `Please enter an employee ID for ${answers.username} :`;
       },
       name: "employeeID",
       validate(answer) {
@@ -30,7 +30,7 @@ const rootQuestions = async () => {
     {
       type: "input",
       message(answers) {
-        return `Hi ${answers.username}.Please enter your  email address:`;
+        return `Please enter ${answers.username}'s email address:`;
       },
       name: "email",
       validate(answer) {
@@ -116,7 +116,7 @@ const extraTeamMembers = async () => {
   const questions = [
     {
       type: "confirm",
-      message: "Do you want to add another Team member?",
+      message: "Do you want to add a Team member?",
       name: "extraMember",
       default: false,
     },
