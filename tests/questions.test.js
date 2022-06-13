@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const { rootQuestions, employeeDetails, officeNumber } = require("../src");
+const { rootQuestions, employeeDetails, officeNumber } = require("../utils/questions");
 
 describe("rootQuestions", () => {
   afterEach(() => {
