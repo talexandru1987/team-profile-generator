@@ -21,7 +21,7 @@ describe("Engineer Class", () => {
     const engineer = new Engineer(mockName, mockId, mockEmail, mockGitHubUser);
 
     //Then
-    expect(engineer.getGithubUsername()).toBe(mockGitHubUser);
+    expect(engineer.getGithub()).toBe(mockGitHubUser);
   });
 
   test("Should return role when getRole is called", () => {

@@ -5,6 +5,7 @@ describe("Employee Class", () => {
   const mockName = "Alex";
   const mockId = "123";
   const mockEmail = "alex@yahoo.com";
+  const mockRole = "Employee";
 
   test("Should create a new instance of Employee", () => {
     //Given
@@ -36,5 +37,13 @@ describe("Employee Class", () => {
 
     //Then
     expect(employee.getEmail()).toBe(mockEmail);
+  });
+
+  test("Should return role when getRole is called", () => {
+    //Given
+    const employee = new Employee(mockName, mockId, mockEmail);
+
+    //Then
+    expect(employee.getRole()).toBe(mockRole);
   });
 });

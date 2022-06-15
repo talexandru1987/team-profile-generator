@@ -52,7 +52,7 @@ const officeNumber = async () => {
   const questions = [
     {
       type: "input",
-      message: "Please enter your office number",
+      message: "Please enter an office number",
       name: "officeNumber",
       validate(answer) {
         const emailRegex = /^[1-9]+[0-9]*$/;
@@ -73,13 +73,13 @@ const employeeDetails = async () => {
   const questions = [
     {
       type: "list",
-      message: "Please choose your role:",
+      message: "Please choose a role:",
       name: "userRole",
       choices: ["Engineer", "Intern"],
     },
     {
       type: "input",
-      message: "Please enter your GitHub username:",
+      message: "Please enter a GitHub username:",
       name: "userGitHub",
       when(answers) {
         return answers.userRole === "Engineer";
@@ -93,7 +93,7 @@ const employeeDetails = async () => {
     },
     {
       type: "input",
-      message: "Please enter your school name:",
+      message: "Please enter a school name:",
       name: "userSchool",
       when(answers) {
         return answers.userRole === "Intern";
@@ -107,7 +107,7 @@ const employeeDetails = async () => {
     },
   ];
   const { userRole, userGitHub, userSchool } = await inquirer.prompt(questions);
-  console.log({ userRole, userGitHub, userSchool });
+
   return { userRole, userGitHub, userSchool };
 };
 
@@ -122,7 +122,7 @@ const extraTeamMembers = async () => {
     },
   ];
   const { extraMember } = await inquirer.prompt(questions);
-  console.log({ extraMember });
+
   return { extraMember };
 };
 

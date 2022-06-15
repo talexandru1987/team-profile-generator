@@ -1,4 +1,7 @@
 const inquirer = require("inquirer");
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 
 const {
   rootQuestions,
@@ -19,12 +22,19 @@ const init = async () => {
     const managerInit = await rootQuestions();
     //get the office number
     const officeNo = await officeNumber();
-    // push object to array
-    teamMembers.push({ ...managerInit, ...officeNo });
+    // push manager class to array
+    teamMembers.push(
+      new Manager(
+        managerInit.username,
+        managerInit.employeeID,
+        managerInit.email,
+        officeNo.officeNumber
+      )
+    );
   }
   //check if you want to add team members
   const addTeam = await extraTeamMembers();
-  console.log(addTeam);
+
   if (addTeam.extraMember) {
     //cycle through the loop to get all the team members
     while (stop) {
@@ -32,11 +42,32 @@ const init = async () => {
       let memberInit = await rootQuestions();
       //get the extra details
       let memberDetails = await employeeDetails();
-      //push to the array
-      teamMembers.push({ ...memberInit, ...memberDetails });
+      //check if intern or Engineer
+      if (memberDetails.userRole === "Engineer") {
+        //push the Engineer class to the array
+        teamMembers.push(
+          new Engineer(
+            memberInit.username,
+            memberInit.employeeID,
+            memberInit.email,
+            memberDetails.userGitHub
+          )
+        );
+      } else {
+        //push the Intern class to the array
+        teamMembers.push(
+          new Intern(
+            memberInit.username,
+            memberInit.employeeID,
+            memberInit.email,
+            memberDetails.userSchool
+          )
+        );
+      }
       //ask if a new member is needed
       stop = (await extraTeamMembers()).extraMember;
     }
   }
+  console.log(teamMembers);
 };
 init();

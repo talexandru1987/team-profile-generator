@@ -8,6 +8,5 @@ const writeToFile = (filePath, payload) => {
 
 // export task here
 module.exports = {
-  readFromFile,
   writeToFile,
 };
