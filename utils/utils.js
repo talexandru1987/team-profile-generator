@@ -6,6 +6,25 @@ const writeToFile = (filePath, payload) => {
   fs.writeFileSync(filePath, payload);
 };
 
+
+
+
+const cardGenerator = (objectsArray) {
+  const displayCards = objectsArray.map((eachObject) => {
+    //if Manager
+    if(eachObject.getRole() === "Manager"){
+      //create a manager card
+    }else if(eachObject.getRole() === "Engineer"){
+      //create an engineer card
+
+    }else if(eachObject.getRole() === "Intern"){
+      //create an Intern card
+
+    }
+
+  }).join("") 
+}
+
 // export task here
 module.exports = {
   writeToFile,
