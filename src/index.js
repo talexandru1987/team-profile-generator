@@ -1,7 +1,7 @@
-const inquirer = require("inquirer");
 const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
+const Team = require("../lib/Team");
 
 const {
   rootQuestions,
@@ -10,21 +10,25 @@ const {
   extraTeamMembers,
 } = require("../utils/questions");
 
+const { writeToFile, cardGenerator } = require("../utils/utils");
+const Team = require("../lib/Team");
+
 const init = async () => {
   //the while loop variable
   let stop = true;
   //the team object array
-  const teamMembers = [];
+  const teamMembers = new Team();
 
   //the first object will always be the team manager
-  if (teamMembers.length === 0) {
+  if (teamMembers.getMembers().length === 0) {
     //get the initial questions
     const managerInit = await rootQuestions();
     //get the office number
     const officeNo = await officeNumber();
-    // push manager class to array
-    teamMembers.push(
-      new Manager(
+    // push manager class to push to array
+
+    teamMembers.addToMembers(
+      teamMembers.createMember(
         managerInit.username,
         managerInit.employeeID,
         managerInit.email,
@@ -69,5 +73,8 @@ const init = async () => {
     }
   }
   console.log(teamMembers);
+
+  const testing = cardGenerator(teamMembers);
+  console.log(testing);
 };
 init();
