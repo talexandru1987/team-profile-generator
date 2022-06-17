@@ -11,7 +11,6 @@ const {
 } = require("../utils/questions");
 
 const { writeToFile, cardGenerator } = require("../utils/utils");
-const Team = require("../lib/Team");
 
 const init = async () => {
   //the while loop variable
@@ -26,7 +25,6 @@ const init = async () => {
     //get the office number
     const officeNo = await officeNumber();
     // push manager class to push to array
-
     teamMembers.addToMembers(
       teamMembers.createMember(
         managerInit.username,
@@ -49,21 +47,25 @@ const init = async () => {
       //check if intern or Engineer
       if (memberDetails.userRole === "Engineer") {
         //push the Engineer class to the array
-        teamMembers.push(
-          new Engineer(
+        teamMembers.addToMembers(
+          teamMembers.createMember(
             memberInit.username,
             memberInit.employeeID,
             memberInit.email,
-            memberDetails.userGitHub
+            undefined,
+            memberDetails.userGitHub,
+            undefined
           )
         );
       } else {
         //push the Intern class to the array
-        teamMembers.push(
-          new Intern(
+        teamMembers.addToMembers(
+          teamMembers.createMember(
             memberInit.username,
             memberInit.employeeID,
             memberInit.email,
+            undefined,
+            undefined,
             memberDetails.userSchool
           )
         );
@@ -72,9 +74,13 @@ const init = async () => {
       stop = (await extraTeamMembers()).extraMember;
     }
   }
-  console.log(teamMembers);
+  console.log(`The members length is: ${teamMembers.getMembers().length}`);
+  console.log(`The members are: ${teamMembers.getMembers()}`);
+  console.log(`The members are: ${teamMembers.getMembers()[0]}`);
+  console.log(`The members are: ${typeof teamMembers.getMembers()}`);
 
-  const testing = cardGenerator(teamMembers);
-  console.log(testing);
+  const generatedCards = cardGenerator(teamMembers);
+
+  //console.log(`The cards are: ${generatedCards}`);
 };
 init();
