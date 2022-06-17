@@ -1,6 +1,3 @@
-const Manager = require("../lib/Manager");
-const Engineer = require("../lib/Engineer");
-const Intern = require("../lib/Intern");
 const Team = require("../lib/Team");
 
 const {
@@ -74,13 +71,54 @@ const init = async () => {
       stop = (await extraTeamMembers()).extraMember;
     }
   }
-  console.log(`The members length is: ${teamMembers.getMembers().length}`);
-  console.log(`The members are: ${teamMembers.getMembers()}`);
-  console.log(`The members are: ${teamMembers.getMembers()[0]}`);
-  console.log(`The members are: ${typeof teamMembers.getMembers()}`);
 
-  const generatedCards = cardGenerator(teamMembers);
-
-  //console.log(`The cards are: ${generatedCards}`);
+  //generate the html
+  const generatedCards = `<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Team Generator</title>
+  
+      <script src="https://kit.fontawesome.com/316b4276d9.js" crossorigin="anonymous"></script>
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+      />
+    </head>
+    <body>
+      <main>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
+          <a class="navbar-brand" href="#">Team Name</a>
+        </nav>
+        <div class="container-fluid">
+          <div class="row">${cardGenerator(teamMembers.getMembers())}</div>
+        </div>
+      </main>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script src="./index.js"></script>
+    </body>
+  </html>`;
+  //write to file
+  writeToFile(generatedCards);
 };
 init();
