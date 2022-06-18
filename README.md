@@ -37,3 +37,7 @@ THEN I exit the application, and the HTML is generated
 ## Mock-Up
 
 The following video shows the application functionality:
+
+
+https://user-images.githubusercontent.com/31418446/174433816-164410d8-2ea6-4bcf-ab87-03695e29affc.mp4
+
