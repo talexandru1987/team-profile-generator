@@ -1,0 +1,29 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch --silent --verbose",
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talexandru1987/team-profile-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/talexandru1987/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/talexandru1987/team-profile-generator#readme",
+  "devDependencies": {
+    "@types/jest": "^28.1.1",
+    "jest": "^28.1.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
